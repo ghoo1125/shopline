@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Path
+from fastapi import FastAPI, HTTPException, Path, Response
 
 from shopline.model import Cart, InputItem
 from shopline.processor import Processor
@@ -18,6 +18,7 @@ def get_shopping_cart(user_id: int = Path(None, title="User ID", gt=0)):
 def put_shopping_cart(item: InputItem, user_id: int = Path(None, title="User ID", gt=0)):
     try:
         Processor().add_item(user_id, item.id, item.quantity)
+        return Response(status_code=200)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception:
