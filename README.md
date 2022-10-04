@@ -23,16 +23,16 @@ Testing users and products are shown in the image.
 
 
 # Demo
-1. Add cart to test user
+1. Add product to test user's cart
 <img width="1073" alt="Screen Shot 2022-10-04 at 10 55 50 PM" src="https://user-images.githubusercontent.com/15011876/193853198-b15ddb42-3f2e-42a3-8f71-25a772b6894e.png">
 
-2. get test user's cart
+2. Get test user's cart
 <img width="1071" alt="Screen Shot 2022-10-04 at 10 56 39 PM" src="https://user-images.githubusercontent.com/15011876/193853389-55f607b6-be92-4af7-9dd6-532aa5042337.png">
 
-3. checkout test user's cart
+3. Checkout test user's cart
 <img width="1072" alt="Screen Shot 2022-10-04 at 10 57 29 PM" src="https://user-images.githubusercontent.com/15011876/193853559-5a99f2c9-1326-4ccc-aa75-7d7efd9f31ea.png">
 
-4. user order, line items have been created in database and product (id:111) inventory has been changed (10 -> 9)
+4. User order, line items have been created in database and inventory of product 111 has been changed (10 -> 9)
 <img width="288" alt="Screen Shot 2022-10-04 at 11 00 15 PM" src="https://user-images.githubusercontent.com/15011876/193854276-dcf0924a-e533-4f45-93f7-70dca7227bbb.png">
 
 
