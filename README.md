@@ -5,7 +5,7 @@ Clone the repository then run the following command, the script will build and r
 ```
 
 # API
-Open browser and connect to service [swagger API](localhost:8000/docs) to view and play with the shopping cart and order endpoints. 
+Open browser and connect to service [swagger API](http://localhost:8000/docs) to view and play with the shopping cart and order endpoints. 
 There are 3 APIs put item into shopping cart and checkout cart and get cart for better viewing.
 <img width="1394" alt="Screen Shot 2022-10-04 at 10 33 20 PM" src="https://user-images.githubusercontent.com/15011876/193847536-be22f0cc-adf5-463e-b79d-1195ef5181bb.png">
 
@@ -32,7 +32,7 @@ Testing users and products are shown in the image.
 3. checkout test user's cart
 <img width="1072" alt="Screen Shot 2022-10-04 at 10 57 29 PM" src="https://user-images.githubusercontent.com/15011876/193853559-5a99f2c9-1326-4ccc-aa75-7d7efd9f31ea.png">
 
-4. user order, line items have been created in database and product inventory has been changed (10 -> 9)
+4. user order, line items have been created in database and product (id:111) inventory has been changed (10 -> 9)
 <img width="288" alt="Screen Shot 2022-10-04 at 11 00 15 PM" src="https://user-images.githubusercontent.com/15011876/193854276-dcf0924a-e533-4f45-93f7-70dca7227bbb.png">
 
 
