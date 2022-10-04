@@ -35,4 +35,4 @@ Testing users and products are shown in the image.
 4. User order, line items have been created in database and inventory of product 111 has been changed (10 -> 9)
 <img width="288" alt="Screen Shot 2022-10-04 at 11 00 15 PM" src="https://user-images.githubusercontent.com/15011876/193854276-dcf0924a-e533-4f45-93f7-70dca7227bbb.png">
 
-
+Note: You could rerun the `run.sh` to reset the environment if something goes wrong 

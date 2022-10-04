@@ -12,9 +12,7 @@ class Processor():
         return Cart(total_price=total, items=items)
 
     def add_item(self, user_id, product_id, quantity) -> None:
-        user = self.dao.get_user(user_id)
-        if not user:
-            raise ValueError(f'user {user_id} not found')
+        self.check_user_exist(user_id)
         product = self.dao.get_product(product_id)
         if not product:
             raise ValueError(f'product {product_id} not exist')
@@ -24,8 +22,11 @@ class Processor():
         pass
 
     def checkout(self, user_id):
+        self.check_user_exist(user_id)
         items = self.dao.get_cart_items(user_id)
         product_ids = list(map(lambda item: item.id, items))
+        if not product_ids:
+            raise ValueError('no items to checkout')
         id_to_product = {p.id: p for p in self.dao.get_products(product_ids)}
         for item in items:
             if item.id not in id_to_product or item.quantity > id_to_product[item.id].inventory:
@@ -36,3 +37,8 @@ class Processor():
         self.dao.delete_cart(user_id)
         self.dao.update_products(id_to_product.values())
         return order_id
+
+    def check_user_exist(self, user_id):
+        user = self.dao.get_user(user_id)
+        if not user:
+            raise ValueError(f'user {user_id} not found')
