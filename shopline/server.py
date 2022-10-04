@@ -14,21 +14,21 @@ def get_shopping_cart(user_id: int = Path(None, title="User ID", gt=0)):
         raise HTTPException(status_code=500, detail="get cart failed")
 
 
-@app.post('/api/v1/users/{user_id}/carts', status_code=204)
+@app.post('/api/v1/users/{user_id}/carts', status_code=201)
 def put_shopping_cart(item: InputItem, user_id: int = Path(None, title="User ID", gt=0)):
     try:
         Processor().add_item(user_id, item.id, item.quantity)
-    except ValueError:
-        raise HTTPException(status_code=400, detail="product not found")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception:
         raise HTTPException(status_code=500, detail="put cart failed")
 
 
-@app.get('api/v1/users/{user_id}/orders')
+@app.post('/api/v1/users/{user_id}/cart/checkout', status_code=201)
 def checkout_cart(user_id: int = Path(None, title="User ID", gt=0)):
-    return "get orders"
-
-
-@app.post('api/v1/users/{user_id}/cart/checkout')
-def checkout_cart(user_id: int = Path(None, title="User ID", gt=0)):
-    return "checkout and create order"
+    try:
+        return {"orderId": Processor().checkout(user_id)}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception:
+        raise HTTPException(status_code=500, detail="create order failed")

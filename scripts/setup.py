@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
-url = "mysql+pymysql://xxx:xxx@localhost/testDB"
+url = "mysql+pymysql://testUser:password@localhost/testDB"
 engine = create_engine(url)
 
 if not database_exists(engine.url):
@@ -38,4 +38,4 @@ for user in users:
 products = db.query(Product).all()
 for product in products:
     print(vars(product))
-print("database created!!!")
+print("database created & initialized!!!")
