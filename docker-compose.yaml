@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  # MySQL
+  db:
+    container_name: "mysql-db"
+    image: mysql/mysql-server
+    restart: always
+    tty: true
+    environment:
+      MYSQL_DATABASE: testDB
+      MYSQL_USER: testUser
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - local-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # FastAPI
+  api:
+    links:
+      - db
+    container_name: "api"
+    build: .
+    ports:
+      - "8000:8000"
+    networks:
+      - local-net
+    environment:
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+
+networks:
+  local-net:
+    driver: bridge

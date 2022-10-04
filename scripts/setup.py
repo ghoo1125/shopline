@@ -1,10 +1,14 @@
+import os
+
 from shopline.database.model import Base, Product, User
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
-url = "mysql+pymysql://testUser:password@localhost/testDB"
+host = os.getenv("DB_HOST", "localhost")
+url = f"mysql+pymysql://testUser:password@{host}/testDB"
+print("db url:", url)
 engine = create_engine(url)
 
 if not database_exists(engine.url):

@@ -1,3 +1,5 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -6,7 +8,7 @@ class MysqlClient():
     ACCOUNT = 'testUser'
     PASSWORD = 'password'
     DATABASE = 'testDB'
-    DOMAIN = 'localhost'
+    DOMAIN = os.getenv("DB_HOST", "localhost")
     _instance = None
 
     @staticmethod

@@ -2,3 +2,5 @@ uvicorn
 fastapi
 pymysql
 sqlalchemy
+sqlalchemy_utils
+cryptography

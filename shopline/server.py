@@ -14,7 +14,7 @@ def get_shopping_cart(user_id: int = Path(None, title="User ID", gt=0)):
         raise HTTPException(status_code=500, detail="get cart failed")
 
 
-@app.post('/api/v1/users/{user_id}/carts', status_code=201)
+@app.put('/api/v1/users/{user_id}/carts')
 def put_shopping_cart(item: InputItem, user_id: int = Path(None, title="User ID", gt=0)):
     try:
         Processor().add_item(user_id, item.id, item.quantity)
