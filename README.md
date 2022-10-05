@@ -1,14 +1,14 @@
 # Setup
 Clone the repository then run the services either in containers or local machine.
 ## Container
- The script will build and run two containers `api` and `mysql-db`. And feed testing data into database. Please make sure `docker` is installed first.
+ The script will build and run two containers `api` (port 8000) and `mysql-db` (port 3306). And feed testing data into database. Please make sure `docker` is installed first.
 ```
 $./scripts/run.sh
 ```
 ## Local
 Install required python packages (make sure you have python3 installed on your machine)
 ```
-$pip install -r requiremnts.txt
+$pip3 install -r requiremnts.txt
 ```
 Run mysql-db container
 ```
@@ -18,13 +18,13 @@ Feed testing data into db
 ```
 $python3 -m scripts.setup
 ```
-Run server in local
+Run server on localhost:8000
 ```
 uvicorn src.server:app --reload
 ```
 
 # API
-Open browser and connect to service [swagger API](http://localhost:8000/docs) to view and play with the shopping cart and order endpoints. 
+Open browser and connect to service [swagger API](http://localhost:8000/docs) to view and play with the shopping cart and order endpoints. Or use `curl` command mannually if you are more comfortable with it. Detail API schema please refer to the [file](https://github.com/ghoo1125/shopline/blob/main/src/server.py)
 There are 3 APIs put item into shopping cart, checkout cart and get cart for better viewing.
 <img width="1394" alt="Screen Shot 2022-10-04 at 10 33 20 PM" src="https://user-images.githubusercontent.com/15011876/193847536-be22f0cc-adf5-463e-b79d-1195ef5181bb.png">
 
