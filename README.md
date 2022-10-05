@@ -24,7 +24,7 @@ uvicorn src.server:app --reload
 ```
 
 # API
-Open browser and connect to service [swagger API](http://localhost:8000/docs) to view and play with the shopping cart and order endpoints. Or use `curl` command mannually if you are more comfortable with it. Detail API schema please refer to the [file](https://github.com/ghoo1125/shopline/blob/main/src/server.py)
+Open browser and connect to service [swagger API](http://localhost:8000/docs) to view and play with the shopping cart and order endpoints. Or use `curl` command mannually if you are more comfortable with it. Detailed API schema please refer to the [file](https://github.com/ghoo1125/shopline/blob/main/src/server.py)
 There are 3 APIs put item into shopping cart, checkout cart and get cart for better viewing.
 <img width="1394" alt="Screen Shot 2022-10-04 at 10 33 20 PM" src="https://user-images.githubusercontent.com/15011876/193847536-be22f0cc-adf5-463e-b79d-1195ef5181bb.png">
 
@@ -36,7 +36,7 @@ You could log into DB container using test user account and password `testUser:p
 ```
 $docker exec -it mysql-db mysql -u testUser -p
 ```
-There are total 5 tables under `testDB` database which are User, Product, CartItem, Order and LineItem. Detailed schema please refer to the [file](https://github.com/ghoo1125/shopline/blob/main/shopline/database/model.py).
+There are total 5 tables under `testDB` database which are User, Product, CartItem, Order and LineItem. Detailed schema please refer to the [file](https://github.com/ghoo1125/shopline/blob/main/src/database/model.py).
 Testing users and products are shown in the image.
 <img width="611" alt="Screen Shot 2022-10-04 at 10 43 08 PM" src="https://user-images.githubusercontent.com/15011876/193850078-2d95719f-0ba2-43a3-bd73-2ffca1c9c103.png">
 
