@@ -1,10 +1,10 @@
-from shopline.database.dao import Dao
-from shopline.model import Cart
+from src.database.dao import Dao
+from src.model import Cart
 
 
 class Processor():
-    def __init__(self):
-        self.dao = Dao()
+    def __init__(self, dao=None):
+        self.dao = dao if dao else Dao()
 
     def get_cart(self, user_id):
         items = self.dao.get_cart_items(user_id)
@@ -18,9 +18,6 @@ class Processor():
             raise ValueError(f'product {product_id} not exist')
         self.dao.upsert_cart_item(user_id, product_id, quantity)
 
-    def get_order(self, user_id):
-        pass
-
     def checkout(self, user_id):
         self.check_user_exist(user_id)
         items = self.dao.get_cart_items(user_id)
@@ -32,6 +29,7 @@ class Processor():
             if item.id not in id_to_product or item.quantity > id_to_product[item.id].inventory:
                 raise ValueError(f'product {item.name} is out of stock')
             else:
+                # print(id_to_product[item.id].inventory, item.quantity)
                 id_to_product[item.id].inventory -= item.quantity
         order_id = self.dao.create_order(user_id, items)
         self.dao.delete_cart(user_id)

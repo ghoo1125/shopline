@@ -1,6 +1,6 @@
 import os
 
-from shopline.database.model import Base, Product, User
+from src.database.model import Base, Product, User
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker

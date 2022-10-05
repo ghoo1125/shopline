@@ -1,9 +1,10 @@
 from typing import List
 
-from shopline.database.model import CartItem, LineItem, Order, Product, User
-from shopline.database.mysql_client import MysqlClient
-from shopline.model import CartItem as CoreCartItem
-from shopline.model import Product as CoreProduct
+from src.database.model import CartItem, LineItem, Order, Product, User
+from src.database.mysql_client import MysqlClient
+from src.model import CartItem as CoreCartItem
+from src.model import Product as CoreProduct
+from src.model import User as CoreUser
 
 
 class Dao():
@@ -12,7 +13,7 @@ class Dao():
 
     def get_user(self, user_id):
         user = self.client.get(User, user_id)
-        return User(id=user.id, name=user.name, email=user.email, address=user.address) if user else None
+        return CoreUser(id=user.id, name=user.name, email=user.email, address=user.address) if user else None
 
     def get_product(self, product_id) -> CoreProduct:
         product = self.client.get(Product, product_id)

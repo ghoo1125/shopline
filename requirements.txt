@@ -4,3 +4,5 @@ pymysql
 sqlalchemy
 sqlalchemy_utils
 cryptography
+pytest
+pytest-mock

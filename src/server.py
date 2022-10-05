@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Path, Response
 
-from shopline.model import Cart, InputItem
-from shopline.processor import Processor
+from src.model import Cart, InputItem
+from src.processor import Processor
 
 app = FastAPI()
 
